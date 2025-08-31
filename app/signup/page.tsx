@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
-
 interface RegisterData {
     name: string,
     email: string,
@@ -13,22 +12,21 @@ interface RegisterData {
 
 function SignUp() {
     const [formData, setFormData] = useState<RegisterData>({
-        name: "",
-        email: "",
-        password: "",
-        team_name: "",
+      name: "",
+      email: "",
+      password: "",
+      team_name: "",
     })
 
     const router = useRouter();
     
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        if (!formData.name || !formData.email || !formData.password || !formData.team_name) {
-            toast.error("All fields are required!");
-            return;
-        }
+      e.preventDefault();
+      if (!formData.name || !formData.email || !formData.password || !formData.team_name) {
+          toast.error("All fields are required!");
+          return;
+      }
 
       try {
         const res = await fetch("https://test.blockfuselabs.com/api/register", {
@@ -39,12 +37,6 @@ function SignUp() {
           body: JSON.stringify(formData),
         });
       
-        // if (!res.ok) {
-        //   const errorData = await res.json();
-        //   toast.error(errorData.message || "Registration failed!");
-        //   return;
-        // }
-      
         const data = await res.json();
         toast.success("Registered Successfully");
       
@@ -52,7 +44,7 @@ function SignUp() {
       
         setFormData({ name: "", email: "", password: "", team_name: "" });
 
-      router.push("/signin");
+        router.push("/signin");
       
         } catch (error) {
         console.error("Error:", error);

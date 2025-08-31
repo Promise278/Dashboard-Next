@@ -1,27 +1,10 @@
-// import React from 'react'
-
-// function Dashboard() {
-//   return (
-//     <div>
-//       Dashboard
-//     </div>
-//   )
-// }
-
-// export default Dashboard
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  team_name: string;
-}
 
 export default function Dashboard() {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState(null);
   const router = useRouter();
 
   const handleLogout = () => {
@@ -44,14 +27,6 @@ export default function Dashboard() {
       <div className="flex-1 p-6">
         <header className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
-          {user && (
-            <div className="flex items-center gap-3">
-              <span className="text-gray-700">{user.name}</span>
-              <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white">
-                {user.name.charAt(0)}
-              </div>
-            </div>
-          )}
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -73,7 +48,7 @@ export default function Dashboard() {
           <h2 className="text-lg font-semibold text-gray-800 mb-4">Recent Activity</h2>
           <ul className="space-y-3">
             <li className="text-gray-600">✅ Logged in successfully</li>
-            <li className="text-gray-600">📂 Joined team <b>{user?.team_name}</b></li>
+            <li className="text-gray-600">📂 Joined team <b>{404}</b></li>
             <li className="text-gray-600">⚡ Started a new project</li>
           </ul>
         </div>
